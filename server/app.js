@@ -27,9 +27,25 @@ await start()
 
 app.get('/players', async (req, res) => {
    const result = await connection.execute(
-      'SELECT * FROM DATASETFINAL WHERE ROWNUM <= 10'
+      'SELECT * FROM DATASETFINAL WHERE ROWNUM <= 30'
    )
-   res.json(result.rows)
+
+   const playerName = req.query.keyword
+
+   if (playerName) {
+      const searched = await connection.execute(
+         `SELECT * FROM DATASETFINAL WHERE PLAYER_NAME LIKE '%${playerName}%'`
+      )
+      res.json(searched.rows)
+   } else {
+      res.json(result.rows)
+   }
+})
+
+app.delete('/players/:id', async (req, res) => {
+   const id = req.params.id
+
+   await connection.execute(`DELETE FROM DATASETFINAL WHERE PLAYER_ID=${id}`)
 })
 
 app.listen(PORT, () => {

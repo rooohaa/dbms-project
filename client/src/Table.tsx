@@ -3,13 +3,14 @@ import TableItem from './TableItem'
 import './Table.css'
 
 interface TableProps {
-   data: any[]
+   data: any[],
+   onDelete: (id: number) => void
 }
 
-const Table: React.FC<TableProps> = ({ data }) => {
+const Table: React.FC<TableProps> = ({ data, onDelete }) => {
    const getTableItems = (tableData: any[]): JSX.Element[] => {
       return data.map((item, idx) => {
-         return <TableItem item={item} key={idx} />
+         return <TableItem item={item} key={idx} onDelete={onDelete}/>
       })
    }
 

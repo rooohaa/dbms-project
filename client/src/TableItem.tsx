@@ -3,9 +3,10 @@ import './TableItem.css'
 
 interface TableItemProps {
    item?: any
+   onDelete: (id: number) => void
 }
 
-const TableItem: React.FC<TableItemProps> = ({ item }) => {
+const TableItem: React.FC<TableItemProps> = ({ item, onDelete }) => {
    const {
       PLAYER_ID,
       PLAYER_NAME,
@@ -26,11 +27,7 @@ const TableItem: React.FC<TableItemProps> = ({ item }) => {
    return (
       <li className="item">
          <div className="main">
-            <img
-               className="man-img"
-               src={PLAYER_PHOTO}
-               alt=""
-            />
+            <img className="man-img" src={PLAYER_PHOTO} alt="" />
             <div>
                <div className="name">
                   <img src={PLAYER_FLAG_PHOTO} alt="" />
@@ -75,6 +72,10 @@ const TableItem: React.FC<TableItemProps> = ({ item }) => {
          <div className="secondary">
             <span>{PLAYER_JOINED}</span>
          </div>
+         <i
+            className="fas fa-trash-alt delete"
+            onClick={() => onDelete(PLAYER_ID)}
+         ></i>
       </li>
    )
 }
