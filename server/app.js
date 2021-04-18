@@ -25,8 +25,10 @@ async function start() {
 
 await start()
 
-app.get('/', async (req, res) => {
-   const result = await connection.execute('SELECT * FROM EMPLOYEES')
+app.get('/players', async (req, res) => {
+   const result = await connection.execute(
+      'SELECT * FROM DATASETFINAL WHERE ROWNUM <= 10'
+   )
    res.json(result.rows)
 })
 

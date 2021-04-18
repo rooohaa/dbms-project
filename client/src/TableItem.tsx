@@ -1,57 +1,82 @@
-import React from 'react';
-import './TableItem.css';
+import React from 'react'
+import './TableItem.css'
 
-interface TableItemProps{
-    item?: any
+interface TableItemProps {
+   item?: any
 }
 
-const TableItem: React.FC<TableItemProps> = ({item}) => {
-    return (
-        <li className="item">
-            <div className="main">
-                <img className="man-img" src="https://cdn.sofifa.com/players/259/081/21_60.png" alt=""/>
-                <div>
-                    <div className="name">
-                        <img src="https://cdn.sofifa.com/flags/ro.png" alt=""/>
-                        <span>richars</span>
-                    </div>
-                    <div className="pos">
-                        <span>LF SFA</span>
-                    </div>
-                </div>
+const TableItem: React.FC<TableItemProps> = ({ item }) => {
+   const {
+      PLAYER_ID,
+      PLAYER_NAME,
+      PLAYER_AGE,
+      PLAYER_OVERALL_SCORE,
+      PLAYER_PHOTO,
+      PLAYER_CLUB,
+      PLAYER_CLUB_PHOTO,
+      PLAYER_CONTRACT,
+      PLAYER_FLAG_PHOTO,
+      PLAYER_VALUE,
+      PLAYER_WAGE,
+      PLAYER_NATIONALITY,
+      PLAYER_JOINED,
+      PLAYER_SKILLS,
+   } = item
+
+   return (
+      <li className="item">
+         <div className="main">
+            <img
+               className="man-img"
+               src={PLAYER_PHOTO}
+               alt=""
+            />
+            <div>
+               <div className="name">
+                  <img src={PLAYER_FLAG_PHOTO} alt="" />
+                  <span>{PLAYER_NAME}</span>
+               </div>
+               <div className="pos">
+                  <span>{PLAYER_ID}</span>
+               </div>
             </div>
-            <div className="secondary">
-                <div className="ova"><span>16</span></div>
+         </div>
+         <div className="secondary">
+            <span>{PLAYER_AGE}</span>
+         </div>
+         <div className="secondary">
+            <div className="ova">
+               <span>{PLAYER_OVERALL_SCORE}</span>
             </div>
-            <div className="secondary">
-                <div className="pot"><span>54</span></div>
+         </div>
+         <div className="secondary">
+            <div>
+               <span className="pot">{PLAYER_SKILLS}</span>
             </div>
-            <div className="secondary">
-                <span>80</span>
+         </div>
+         <div className="team">
+            <div className="name team-name">
+               <img className="team-img" src={PLAYER_CLUB_PHOTO} alt="" />
+               <span>{PLAYER_CLUB}</span>
             </div>
-            <div className="team">
-                <div className="name team-name">
-                    <img className="team-img" src="https://cdn.sofifa.com/teams/19/30.png" alt=""/>
-                    <span>West bromowich</span>
-                </div>
-                <div>
-                    <span>2020</span>
-                </div>
+            <div>
+               <span>{PLAYER_CONTRACT}</span>
             </div>
-            <div  className="secondary">
-                <span>€425K</span>
-            </div>
-            <div  className="secondary">
-                <span>€1K</span>
-            </div>
-            <div  className="secondary">
-                <span>1353</span>
-            </div>
-            <div  className="secondary">
-                <span>30</span>
-            </div>
-        </li>    
-    );
+         </div>
+         <div className="secondary">
+            <span>{PLAYER_VALUE}</span>
+         </div>
+         <div className="secondary">
+            <span>{PLAYER_WAGE}</span>
+         </div>
+         <div className="secondary">
+            <span>{PLAYER_NATIONALITY}</span>
+         </div>
+         <div className="secondary">
+            <span>{PLAYER_JOINED}</span>
+         </div>
+      </li>
+   )
 }
 
-export default TableItem;
+export default TableItem
