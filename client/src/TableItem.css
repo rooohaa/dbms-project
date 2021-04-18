@@ -1,0 +1,69 @@
+.item{
+    display: grid;
+    grid-template-columns: 1fr 100px 100px 100px 1fr 100px 100px 100px 100px;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #000;
+}
+
+.man-img{
+    height: 100%;
+}
+
+.main{
+    display: flex;
+    align-items: center;
+}
+
+.secondary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.name > span{
+    margin-left: 10px;
+}
+
+.pos > span{
+    color: greenyellow;
+}
+
+.name{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ova,.pot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 30px;
+}
+
+.ova{
+    background-color: #e77e23;
+}
+
+.pot{
+    background-color: #9bbf30;
+}
+
+.team-img{
+    width: 40px;
+}
+
+.team-name{
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
