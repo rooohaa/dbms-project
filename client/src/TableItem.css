@@ -1,89 +1,95 @@
-.item{
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 100px 100px 100px 1fr 100px 100px 80px 130px;
-    padding: 5px 0;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #000;
+.item {
+   position: relative;
+   display: grid;
+   grid-template-columns: 1fr 100px 100px 100px 1fr 100px 100px 80px 130px;
+   padding: 5px 0;
+   margin-bottom: 15px;
+   border-bottom: 1px solid #000;
 }
-.item:hover > .delete{
-    display: block;
-}
-
-
-.man-img{
-    height: 100%;
+.item:hover > .delete {
+   display: block;
 }
 
-.main{
-    display: flex;
-    align-items: center;
+.man-img {
+   width: 45px;
+   object-fit: contain;
+   height: 100%;
 }
 
-.secondary{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.main {
+   display: flex;
+   align-items: center;
 }
 
-.team{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+.secondary {
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-.name > span{
-    margin-left: 10px;
+.team {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-end;
 }
 
-.pos > span{
-    color: greenyellow;
+.name > span {
+   margin-left: 10px;
 }
 
-.name{
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+.pos > span {
+   color: greenyellow;
 }
 
-.ova,.pot{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 30px;
+.name {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
 }
 
-.ova{
-    background-color: #e77e23;
+.ova,
+.pot {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 40px;
+   height: 30px;
 }
 
-.pot{
-    background-color: #9bbf30;
+.ova {
+   background-color: #e77e23;
 }
 
-.team-img{
-    width: 40px;
+.pot {
+   background-color: #9bbf30;
 }
 
-.team-name{
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
+.team-img {
+   width: 45px;
 }
 
-.delete{
-    display: none;
-    position: absolute;
-    top: 50%;
-    right: -7px;
-    transform: translateY(-50%);
-    font-size: 20px;
-    transition: .35s all;
+.flag-img {
+   width: 35px;
 }
 
-.delete:hover{
-    color: red;
-    cursor: pointer;
+.team-name {
+   display: flex;
+   align-items: flex-start;
+   margin: 0;
+}
+
+.delete {
+   display: none;
+   position: absolute;
+   top: 50%;
+   right: -7px;
+   transform: translateY(-50%);
+   font-size: 20px;
+   transition: 0.35s all;
+}
+
+.delete:hover {
+   color: red;
+   cursor: pointer;
 }

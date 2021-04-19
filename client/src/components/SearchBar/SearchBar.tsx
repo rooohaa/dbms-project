@@ -11,7 +11,7 @@ const SearchBar: React.FC<IProps> = ({ onSearch }) => {
 
    React.useEffect(() => {
       if (value === '') onSearch(value)
-   }, [value])
+   }, [value, onSearch])
 
    const handleSubmit = (e: React.SyntheticEvent) => {
       e.preventDefault()

@@ -27,10 +27,10 @@ const TableItem: React.FC<TableItemProps> = ({ item, onDelete }) => {
    return (
       <li className="item">
          <div className="main">
-            <img className="man-img" src={PLAYER_PHOTO} alt="" />
+            <img className="man-img" src="/cris.png" alt="" />
             <div>
                <div className="name">
-                  <img src={PLAYER_FLAG_PHOTO} alt="" />
+                  <img className="flag-img" src="/hetafe.png" alt="" />
                   <span>{PLAYER_NAME}</span>
                </div>
                <div className="pos">
@@ -53,7 +53,7 @@ const TableItem: React.FC<TableItemProps> = ({ item, onDelete }) => {
          </div>
          <div className="team">
             <div className="name team-name">
-               <img className="team-img" src={PLAYER_CLUB_PHOTO} alt="" />
+               <img className="team-img" src="/real.png" alt="" />
                <span>{PLAYER_CLUB}</span>
             </div>
             <div>
