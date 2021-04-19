@@ -1,5 +1,5 @@
 import React from 'react'
-import TableItem from './TableItem'
+import { TableItem } from '../TableItem'
 import './Table.css'
 
 interface TableProps {
@@ -32,4 +32,4 @@ const Table: React.FC<TableProps> = ({ data, onDelete }) => {
    )
 }
 
-export default Table
+export { Table }

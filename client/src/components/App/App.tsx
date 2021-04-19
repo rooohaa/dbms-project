@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
-import { SearchBar } from './components/SearchBar'
-import Table from './Table'
+import { SearchBar } from '../SearchBar'
+import { Table } from '../Table/'
 import './App.css'
 
 const App = () => {
@@ -50,4 +49,4 @@ const App = () => {
    )
 }
 
-export default App
+export { App }
