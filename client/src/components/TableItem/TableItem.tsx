@@ -80,4 +80,4 @@ const TableItem: React.FC<TableItemProps> = ({ item, onDelete }) => {
    )
 }
 
-export default TableItem
+export { TableItem }
