@@ -1,19 +1,26 @@
-.item {
+.wrapper{
    position: relative;
+   list-style-type: none;
+}
+
+.item {
    display: grid;
    grid-template-columns: 1fr 100px 100px 100px 1fr 100px 100px 80px 130px;
    padding: 5px 0;
    margin-bottom: 15px;
    border-bottom: 1px solid #000;
+   cursor: pointer;
 }
-.item:hover > .delete {
-   display: block;
+
+.item:hover{
+   background-color: #e2e2e2;
 }
 
 .man-img {
    width: 45px;
    object-fit: contain;
    height: 100%;
+   margin-right: 5px;
 }
 
 .main {
@@ -31,14 +38,14 @@
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: flex-end;
+   align-items: flex-start;
 }
 
-.name > span {
+.name span {
    margin-left: 10px;
 }
 
-.pos > span {
+.pos span {
    color: greenyellow;
 }
 
@@ -67,6 +74,8 @@
 
 .team-img {
    width: 45px;
+   height: 45px;
+   object-fit: contain;
 }
 
 .flag-img {
@@ -75,15 +84,20 @@
 
 .team-name {
    display: flex;
-   align-items: flex-start;
+   align-items: center;
    margin: 0;
 }
 
+.contract{
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+}
+
 .delete {
-   display: none;
    position: absolute;
    top: 50%;
-   right: -7px;
+   right: -16px;
    transform: translateY(-50%);
    font-size: 20px;
    transition: 0.35s all;
