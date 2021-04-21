@@ -42,6 +42,13 @@ app.get('/players', async (req, res) => {
    }
 })
 
+app.put('/players/:id', async (req, res) => {
+   const id = req.params.id
+   const updatedPlayer = req.body
+
+   console.log(id, updatedPlayer)
+})
+
 app.delete('/players/:id', async (req, res) => {
    const id = req.params.id
 

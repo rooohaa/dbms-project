@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
    position: relative;
    list-style-type: none;
 }
@@ -12,7 +12,7 @@
    cursor: pointer;
 }
 
-.item:hover{
+.item:hover {
    background-color: #e2e2e2;
 }
 
@@ -88,17 +88,31 @@
    margin: 0;
 }
 
-.contract{
+.contract {
    width: 100%;
    display: flex;
    justify-content: flex-end;
 }
 
-.delete {
+.item-wrap {
+   position: relative;
+}
+
+.delete-btn {
+   border: none;
+   background-color: inherit;
+   width: 25px;
+   height: 25px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
    position: absolute;
+   right: -50px;
    top: 50%;
-   right: -16px;
    transform: translateY(-50%);
+}
+
+.delete {
    font-size: 20px;
    transition: 0.35s all;
 }

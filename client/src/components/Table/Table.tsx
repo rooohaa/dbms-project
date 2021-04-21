@@ -2,17 +2,25 @@ import React from 'react'
 import { TableItem } from '../TableItem'
 import './Table.css'
 
+import { IPlayer } from '../../types'
+
 interface TableProps {
-   data: any[]
-   onDelete: (id: number) => void,
-   onUpdate: (state: any) => void
+   data: IPlayer[]
+   onDelete: (id: number) => void
+   onItemClick: (player: IPlayer) => void
 }
 
-const Table: React.FC<TableProps> = ({ data, onDelete, onUpdate }) => {
-  
-   const getTableItems = (tableData: any[]): JSX.Element[] => {
+const Table: React.FC<TableProps> = ({ data, onDelete, onItemClick }) => {
+   const getTableItems = (tableData: IPlayer[]): JSX.Element[] => {
       return tableData.map((item, idx) => {
-         return <TableItem item={item} key={idx} onDelete={onDelete} onUpdate={onUpdate} />
+         return (
+            <TableItem
+               item={item}
+               key={idx}
+               onDelete={onDelete}
+               onItemClick={onItemClick}
+            />
+         )
       })
    }
 
