@@ -9,9 +9,15 @@ const PORT = 8000 || process.env.PORT
 
 const app = express()
 
+const logger = (req, res, next) => {
+   console.log(`${req.method} : ${req.url}`)
+   next()
+}
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
+app.use(logger)
 
 let connection
 
