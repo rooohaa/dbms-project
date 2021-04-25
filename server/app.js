@@ -48,6 +48,10 @@ app.get('/players', async (req, res) => {
    }
 })
 
+app.post('/players', async (req, res) => {
+   console.log(req.body)
+})
+
 app.put('/players/:id', async (req, res) => {
    const id = req.params.id
    const updatedPlayer = req.body
@@ -58,7 +62,14 @@ app.put('/players/:id', async (req, res) => {
 app.delete('/players/:id', async (req, res) => {
    const id = req.params.id
 
-   await connection.execute(`DELETE FROM DATASETFINAL WHERE PLAYER_ID=${id}`)
+   await connection.execute(
+      `BEGIN
+         delete_package.delete_procedure(:id);
+      END;`,
+      {
+         id,
+      }
+   )
 })
 
 app.listen(PORT, () => {

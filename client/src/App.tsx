@@ -31,6 +31,13 @@ const App = () => {
 
    const insertPlayer = (player: IPlayer): void => {
       setPlayers((prev) => [player, ...prev])
+      fetch('http://localhost:8000/players', {
+         method: 'POST',
+         body: JSON.stringify(player),
+         headers: {
+            'Content-type': 'application/json',
+         },
+      })
    }
 
    const updatePlayer = (player: IPlayer): void => {
