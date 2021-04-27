@@ -85,6 +85,7 @@ const TableItem: React.FC<TableItemProps> = ({
          </li>
          <button
             className="delete-btn"
+            aria-label="delete-button"
             onClick={() => PLAYER_ID && onDelete(PLAYER_ID)}
          >
             <i className="fas fa-trash-alt delete"></i>

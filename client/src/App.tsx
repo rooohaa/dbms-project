@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ModalForm } from './components/ModalForm'
 import { SearchBar } from './components/SearchBar'
 import { Table } from './components/Table'
+import { ChartsModal } from './components/ChartsModal'
 
 import * as api from './api'
 import { IPlayer } from './types'
@@ -12,6 +13,7 @@ const App = () => {
    const [isLoading, setIsLoading] = useState<boolean>(false)
    const [modalActive, setModalActive] = useState<boolean>(false)
    const [activePlayer, setActivePlayer] = useState<IPlayer | null>(null)
+   const [chartsActive, setChartsActive] = useState<boolean>(false)
 
    useEffect(() => {
       setIsLoading(true)
@@ -84,7 +86,20 @@ const App = () => {
                   onUpdate={updatePlayer}
                />
             ) : null}
+            {chartsActive && (
+               <ChartsModal
+                  data={players}
+                  onClose={() => setChartsActive(false)}
+               />
+            )}
          </div>
+
+         <button
+            className="chart-trigger"
+            onClick={() => setChartsActive(true)}
+         >
+            <i className="fas fa-project-diagram"></i>
+         </button>
       </div>
    )
 }

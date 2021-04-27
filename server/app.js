@@ -33,7 +33,7 @@ await start()
 
 app.get('/players', async (req, res) => {
    const result = await connection.execute(
-      'SELECT * FROM DATASETFINAL WHERE ROWNUM <= 30'
+      'SELECT * FROM DATASETFINAL WHERE ROWNUM <= 100'
    )
 
    const playerName = req.query.keyword
