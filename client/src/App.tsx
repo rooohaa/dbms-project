@@ -31,23 +31,19 @@ const App = () => {
       setPlayers(searchedPlayers)
    }
 
-   const insertPlayer = (player: IPlayer): void => {
-      setPlayers((prev) => [player, ...prev])
-      fetch('http://localhost:8000/players', {
-         method: 'POST',
-         body: JSON.stringify(player),
-         headers: {
-            'Content-type': 'application/json',
-         },
-      })
+   const insertPlayer = async (player: IPlayer) => {
+      const res = await api.insertPlayer(player)
+      const copy = [...players]
+      copy.unshift(res[0])
+      setPlayers(copy)
    }
 
-   const updatePlayer = (player: IPlayer): void => {
+   const updatePlayer = async (player: IPlayer) => {
+      const res = await api.updatePlayer(player)
       const i = players.findIndex((el) => el.PLAYER_ID === player.PLAYER_ID)
       const copy = [...players]
 
-      copy[i] = player
-
+      copy[i] = res[0]
       setPlayers(copy)
    }
 

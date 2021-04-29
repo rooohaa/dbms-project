@@ -5,6 +5,7 @@ import cors from 'cors'
 import { dbConfig } from './dbConfig.js'
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT
+oracledb.autoCommit = true
 const PORT = 8000 || process.env.PORT
 
 const app = express()
@@ -32,9 +33,7 @@ async function start() {
 await start()
 
 app.get('/players', async (req, res) => {
-   const result = await connection.execute(
-      'SELECT * FROM DATASETFINAL WHERE ROWNUM <= 100'
-   )
+   const result = await connection.execute('SELECT * FROM DATASETFINAL')
 
    const playerName = req.query.keyword
 
@@ -49,14 +48,95 @@ app.get('/players', async (req, res) => {
 })
 
 app.post('/players', async (req, res) => {
-   console.log(req.body)
+   const {
+      PLAYER_ID,
+      PLAYER_NAME,
+      PLAYER_AGE,
+      PLAYER_NATIONALITY,
+      PLAYER_CLUB,
+      PLAYER_CONTRACT,
+      PLAYER_JOINED,
+      PLAYER_VALUE,
+      PLAYER_WAGE,
+      PLAYER_ATTACKING,
+      PLAYER_SKILLS,
+      PLAYER_ACCELERATION,
+      PLAYER_POWER,
+      PLAYER_STRENGTH,
+   } = req.body
+
+   await connection.execute(
+      `BEGIN
+         insert_package.insert_procedure(:PLAYER_ID, :PLAYER_NAME, :PLAYER_AGE, :PLAYER_NATIONALITY, :PLAYER_CLUB, :PLAYER_CONTRACT, :PLAYER_JOINED, :PLAYER_VALUE, :PLAYER_WAGE, :PLAYER_ATTACKING, :PLAYER_SKILLS, :PLAYER_ACCELERATION, :PLAYER_POWER, :PLAYER_STRENGTH);
+      END;`,
+      {
+         PLAYER_ID,
+         PLAYER_NAME,
+         PLAYER_AGE,
+         PLAYER_NATIONALITY,
+         PLAYER_CLUB,
+         PLAYER_CONTRACT,
+         PLAYER_JOINED,
+         PLAYER_VALUE,
+         PLAYER_WAGE,
+         PLAYER_ATTACKING,
+         PLAYER_SKILLS,
+         PLAYER_ACCELERATION,
+         PLAYER_POWER,
+         PLAYER_STRENGTH,
+      }
+   )
+
+   const data = await connection.execute(
+      `SELECT * FROM DATASETFINAL WHERE PLAYER_ID = ${PLAYER_ID}`
+   )
+   res.json(data.rows)
 })
 
 app.put('/players/:id', async (req, res) => {
-   const id = req.params.id
-   const updatedPlayer = req.body
+   const {
+      PLAYER_ID,
+      PLAYER_NAME,
+      PLAYER_AGE,
+      PLAYER_NATIONALITY,
+      PLAYER_CLUB,
+      PLAYER_CONTRACT,
+      PLAYER_JOINED,
+      PLAYER_VALUE,
+      PLAYER_WAGE,
+      PLAYER_ATTACKING,
+      PLAYER_SKILLS,
+      PLAYER_ACCELERATION,
+      PLAYER_POWER,
+      PLAYER_STRENGTH,
+   } = req.body
 
-   console.log(id, updatedPlayer)
+   await connection.execute(
+      `BEGIN
+         update_package.update_procedure(:PLAYER_ID, :PLAYER_NAME, :PLAYER_AGE, :PLAYER_NATIONALITY, :PLAYER_CLUB, :PLAYER_CONTRACT, :PLAYER_JOINED, :PLAYER_VALUE, :PLAYER_WAGE, :PLAYER_ATTACKING, :PLAYER_SKILLS, :PLAYER_ACCELERATION, :PLAYER_POWER, :PLAYER_STRENGTH);
+      END;`,
+      {
+         PLAYER_ID,
+         PLAYER_NAME,
+         PLAYER_AGE,
+         PLAYER_NATIONALITY,
+         PLAYER_CLUB,
+         PLAYER_CONTRACT,
+         PLAYER_JOINED,
+         PLAYER_VALUE,
+         PLAYER_WAGE,
+         PLAYER_ATTACKING,
+         PLAYER_SKILLS,
+         PLAYER_ACCELERATION,
+         PLAYER_POWER,
+         PLAYER_STRENGTH,
+      }
+   )
+
+   const data = await connection.execute(
+      `SELECT * FROM DATASETFINAL WHERE PLAYER_ID = ${PLAYER_ID}`
+   )
+   res.json(data.rows)
 })
 
 app.delete('/players/:id', async (req, res) => {

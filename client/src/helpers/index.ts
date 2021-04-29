@@ -1,20 +1,24 @@
 import { IPlayer } from '../types'
 
 export const getUniqueId = (): number => {
-   return Math.round(new Date().getTime() / (Math.random() * 1000))
+   const randomed = Math.round(new Date().getTime() / (Math.random() * 10))
+   const id = Number((randomed + '').slice(0, 5))
+   return id
 }
 
 export const getScoreData = (list: IPlayer[]) => {
    const allScores: number[] = []
 
    for (let el of list) {
-      allScores.push(el.PLAYER_OVERALL_SCORE)
+      if (el.PLAYER_OVERALL_SCORE) {
+         allScores.push(el.PLAYER_OVERALL_SCORE)
+      }
    }
 
    const scoresRange = countScoresRange(allScores)
 
    const scoresData = {
-      labels: ['50 - 60', '60 - 70', '70 - 80', '80 - 90', '90 - 100'],
+      labels: ['300-500', '500 - 600', '600 - 700', '700 - 800', '800 - 900'],
       datasets: [
          {
             label: 'Players count on score range',
@@ -124,15 +128,15 @@ const countScoresRange = (arr: number[]) => {
       fifth = 0
 
    for (let num of arr) {
-      if (num > 50 && num < 60) {
+      if (num > 300 && num < 500) {
          first++
-      } else if (num > 60 && num < 70) {
+      } else if (num > 500 && num < 600) {
          second++
-      } else if (num > 70 && num < 80) {
+      } else if (num > 600 && num < 700) {
          third++
-      } else if (num > 80 && num < 90) {
+      } else if (num > 700 && num < 800) {
          fourth++
-      } else if (num > 90 && num < 100) {
+      } else if (num > 800 && num < 900) {
          fifth++
       }
    }
