@@ -1,40 +1,41 @@
 import React from 'react';
+import { IPlayer } from '../../types';
 import './TopPlayers.css'
 
 interface ITopPlayers{
-    data: any,
+    data: IPlayer[],
     onClose: () => void
 }
 
 const TopPlayers: React.FC<ITopPlayers> = ({data, onClose}) => {
 
-    const getAllPlayersProfile = (data: any) =>{
-        return data.map((item: any, idx: number) => {
+    const getAllPlayersProfile = (data: IPlayer[]) =>{
+        return data.map((item: IPlayer, idx: number) => {
             return (
                 <div  key={idx} className="profile-item">
                     <div className="profile-inner">
                         <span className="profile-title">ID</span>
-                        <span>53116</span>
+                        <span>{item.PLAYER_ID}</span>
                     </div>
                     <div className="profile-inner">
-                        <span className="profile-title">Real Face</span>
-                        <span>No</span>
-                    </div>
-                    <div className="profile-inner">
-                        <span className="profile-title">Body Type</span>
-                        <span>Stocky (170-)</span>
-                    </div>
-                    <div className="profile-inner">
-                        <span className="profile-title">Work Rate</span>
-                        <span>High/ Low</span>
-                    </div>
-                    <div className="profile-inner">
-                        <span className="profile-title">Preferred Foot</span>
-                        <span>Right</span>
+                        <span className="profile-title">Name</span>
+                        <span>{item.PLAYER_NAME}</span>
                     </div>
                     <div className="profile-inner">
                         <span className="profile-title">Age</span>
-                        <span>30</span>
+                        <span>{item.PLAYER_AGE}</span>
+                    </div>
+                    <div className="profile-inner">
+                        <span className="profile-title">Overall score</span>
+                        <span>{item.PLAYER_OVERALL_SCORE}</span>
+                    </div>
+                    <div className="profile-inner">
+                        <span className="profile-title">Club</span>
+                        <span>{item.PLAYER_CLUB}</span>
+                    </div>
+                    <div className="profile-inner">
+                        <span className="profile-title">Value</span>
+                        <span>{item.PLAYER_VALUE}</span>
                     </div>
                 </div>
             )
