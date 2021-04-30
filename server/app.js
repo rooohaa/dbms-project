@@ -47,6 +47,11 @@ app.get('/players', async (req, res) => {
    }
 })
 
+app.get('/top-players', async (req, res) => {
+   const result = await connection.execute('SELECT * FROM RECOMMENDATION_TABLE')
+   res.json(result.rows)
+})
+
 app.post('/players', async (req, res) => {
    const {
       PLAYER_ID,

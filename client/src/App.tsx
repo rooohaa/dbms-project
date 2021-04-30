@@ -16,6 +16,7 @@ const App = () => {
    const [activePlayer, setActivePlayer] = useState<IPlayer | null>(null)
    const [chartsActive, setChartsActive] = useState<boolean>(false)
    const [topPlayersActive, setTopPlayersActive] = useState<boolean>(false)
+   const [topPlayers, setTopPlayers] = useState<IPlayer[] | null>(null)
 
    useEffect(() => {
       setIsLoading(true)
@@ -26,6 +27,17 @@ const App = () => {
          setPlayers(resData)
       }
       getPlayers().then(() => setIsLoading(false))
+   }, [])
+
+   useEffect(() => {
+      const getTopPlayers = async () => {
+         const resp = await fetch('http://localhost:8000/top-players')
+         const respData = await resp.json()
+
+         setTopPlayers(respData)
+      }
+
+      getTopPlayers()
    }, [])
 
    const searchPlayer = async (playerName: string) => {
@@ -91,9 +103,10 @@ const App = () => {
                   onClose={() => setChartsActive(false)}
                />
             )}
-            {topPlayersActive && (
-               <TopPlayers data={[0,1,2,3,4,5,6,7,8,9]}
-                        onClose={() => setTopPlayersActive(false)}
+            {topPlayersActive && topPlayers && (
+               <TopPlayers
+                  data={topPlayers}
+                  onClose={() => setTopPlayersActive(false)}
                />
             )}
          </div>
