@@ -7,6 +7,7 @@ import { ChartsModal } from './components/ChartsModal'
 
 import * as api from './api'
 import { IPlayer } from './types'
+import { TopPlayers } from './components/TopPlayers'
 
 const App = () => {
    const [players, setPlayers] = useState<IPlayer[]>([])
@@ -14,6 +15,7 @@ const App = () => {
    const [modalActive, setModalActive] = useState<boolean>(false)
    const [activePlayer, setActivePlayer] = useState<IPlayer | null>(null)
    const [chartsActive, setChartsActive] = useState<boolean>(false)
+   const [topPlayersActive, setTopPlayersActive] = useState<boolean>(false)
 
    useEffect(() => {
       setIsLoading(true)
@@ -58,6 +60,7 @@ const App = () => {
             <SearchBar
                onSearch={searchPlayer}
                onAdd={() => setModalActive(true)}
+               onShowTop={() => setTopPlayersActive(true)}
             />
             {isLoading ? (
                <p>Loading...</p>
@@ -86,6 +89,11 @@ const App = () => {
                <ChartsModal
                   data={players}
                   onClose={() => setChartsActive(false)}
+               />
+            )}
+            {topPlayersActive && (
+               <TopPlayers data={[0,1,2,3,4,5,6,7,8,9]}
+                        onClose={() => setTopPlayersActive(false)}
                />
             )}
          </div>
