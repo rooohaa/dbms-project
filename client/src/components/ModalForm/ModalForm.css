@@ -90,6 +90,7 @@
    background-color: inherit;
    color: #333;
    border: none;
+   outline: none;  
    font-size: 30px;
    display: flex;
    align-items: center;

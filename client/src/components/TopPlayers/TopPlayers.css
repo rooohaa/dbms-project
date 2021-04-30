@@ -1,0 +1,41 @@
+.profile-modal {
+    display: grid;
+    grid-template-rows: 280px;
+    grid-auto-rows: 280px;
+    grid-template-columns: repeat(5, 230px);
+    grid-gap: 30px;
+    animation: scale 0.4s ease;
+}
+
+.profile-item {
+    padding: 30px 20px 10px;
+    border-radius: 8px;
+    background-color: #ececec;
+    cursor: pointer;
+    transition: .35s ease;
+}
+
+.profile-item:hover {
+    transform: translateY(3%);
+}
+
+.profile-header {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.profile-inner {
+    margin-bottom: 10px;
+}
+
+.profile-title {
+    color: #444;
+    margin-right: 10px;
+}
+
+.profile-exit-btn {
+    top: 40px;
+    right: 40px;
+    background-color: #ececec;
+    border-radius: 100%;
+}

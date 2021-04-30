@@ -3,10 +3,11 @@ import './SearchBar.css'
 
 interface IProps {
    onSearch: (playerName: string) => void
-   onAdd: () => void
+   onAdd: () => void,
+   onShowTop: () => void
 }
 
-const SearchBar: React.FC<IProps> = ({ onSearch, onAdd }) => {
+const SearchBar: React.FC<IProps> = ({ onSearch, onAdd, onShowTop }) => {
    const [value, setValue] = React.useState<string>('')
 
    React.useEffect(() => {
@@ -37,6 +38,9 @@ const SearchBar: React.FC<IProps> = ({ onSearch, onAdd }) => {
          </form>
          <button className="add-btn" onClick={onAdd}>
             Add Player
+         </button>
+         <button className="add-btn" onClick={onShowTop}>
+            Top 10 Players
          </button>
       </div>
    )
