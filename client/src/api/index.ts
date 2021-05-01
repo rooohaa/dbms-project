@@ -1,9 +1,10 @@
 import { IPlayer } from '../types'
 
 export const deletePlayer = async (id: number) => {
-   await fetch(`http://localhost:8000/players/${id}`, {
+   const res = await fetch(`http://localhost:8000/players/${id}`, {
       method: 'DELETE',
    })
+   return await res.json()
 }
 
 export const searchPlayer = async (playerName: string) => {
@@ -12,6 +13,11 @@ export const searchPlayer = async (playerName: string) => {
    )
 
    return await res.json()
+}
+
+export const getTopPlayers = async () => {
+   const resp = await fetch('http://localhost:8000/top-players')
+   return await resp.json()
 }
 
 export const insertPlayer = async (player: IPlayer) => {

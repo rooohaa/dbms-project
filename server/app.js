@@ -155,6 +155,8 @@ app.delete('/players/:id', async (req, res) => {
          id,
       }
    )
+
+   res.json({ message: 'Succesfully deleted' })
 })
 
 app.listen(PORT, () => {

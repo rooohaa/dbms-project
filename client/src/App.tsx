@@ -30,14 +30,12 @@ const App = () => {
    }, [])
 
    useEffect(() => {
-      const getTopPlayers = async () => {
-         const resp = await fetch('http://localhost:8000/top-players')
-         const respData = await resp.json()
-
-         setTopPlayers(respData)
+      const getTop = async () => {
+         const data = await api.getTopPlayers()
+         setTopPlayers(data)
       }
 
-      getTopPlayers()
+      getTop()
    }, [])
 
    const searchPlayer = async (playerName: string) => {
@@ -50,6 +48,9 @@ const App = () => {
       const copy = [...players]
       copy.unshift(res[0])
       setPlayers(copy)
+
+      const topPlayers = await api.getTopPlayers()
+      setTopPlayers(topPlayers)
    }
 
    const updatePlayer = async (player: IPlayer) => {
@@ -59,11 +60,19 @@ const App = () => {
 
       copy[i] = res[0]
       setPlayers(copy)
+
+      const topPlayers = await api.getTopPlayers()
+      setTopPlayers(topPlayers)
    }
 
-   const deletePlayer = (id: number): void => {
+   const deletePlayer = async (id: number) => {
+      const res = await api.deletePlayer(id)
+      console.log(res)
+
       setPlayers(players.filter((el: any) => el.PLAYER_ID !== id))
-      api.deletePlayer(id)
+
+      const topPlayers = await api.getTopPlayers()
+      setTopPlayers(topPlayers)
    }
 
    return (
