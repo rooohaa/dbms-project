@@ -48,32 +48,40 @@ app.get('/players', async (req, res) => {
 })
 
 app.get('/players/sort', async (req, res) => {
-   const result = await connection.execute('SELECT * FROM DATASETFINAL')
+   const players = await connection.execute('SELECT * FROM DATASETFINAL')
    const sortParam = req.query.keyword
 
+   let result
+
    if (sortParam) {
-     
-      switch(sortParam) {
+      switch (sortParam) {
          case 'age':
-            const result = await connection.execute('SELECT * FROM DATASETFINAL ORDER BY PLAYER_AGE DESC')
+            result = await connection.execute(
+               'SELECT * FROM DATASETFINAL ORDER BY PLAYER_AGE DESC'
+            )
             res.json(result.rows)
             break
          case 'ova':
-            const result = await connection.execute('SELECT * FROM DATASETFINAL ORDER BY PLAYER_OVERALL_SCORE DESC')
+            result = await connection.execute(
+               'SELECT * FROM DATASETFINAL ORDER BY PLAYER_OVERALL_SCORE DESC'
+            )
             res.json(result.rows)
             break
          case 'pot':
-            const result = await connection.execute('SELECT * FROM DATASETFINAL ORDER BY PLAYER_PHYSICS_OVERALL DESC')
+            result = await connection.execute(
+               'SELECT * FROM DATASETFINAL ORDER BY PLAYER_PHYSICS_OVERALL DESC'
+            )
             res.json(result.rows)
             break
          case 'value':
-            const result = await connection.execute('SELECT * FROM DATASETFINAL ORDER BY PLAYER_VALUE DESC')
+            result = await connection.execute(
+               'SELECT * FROM DATASETFINAL ORDER BY PLAYER_VALUE DESC'
+            )
             res.json(result.rows)
             break
       }
-
    } else {
-      res.json(result.rows)
+      res.json(players.rows)
    }
 })
 
