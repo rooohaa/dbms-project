@@ -8,13 +8,10 @@ interface TableProps {
    data: IPlayer[]
    onDelete: (id: number) => void
    onItemClick: (player: IPlayer) => void
-   onAgeSort: () => void
-   onOvaSort: () => void
-   onPotSort: () => void
-   onValueSort: () => void
+   onSortPlayer: (sortParam: string) => void
 }
 
-const Table: React.FC<TableProps> = ({ data, onDelete, onItemClick, onAgeSort, onOvaSort, onPotSort, onValueSort }) => {
+const Table: React.FC<TableProps> = ({ data, onDelete, onItemClick, onSortPlayer}) => {
    const getTableItems = (tableData: IPlayer[]): JSX.Element[] => {
       return tableData.map((item, idx) => {
          return (
@@ -32,11 +29,11 @@ const Table: React.FC<TableProps> = ({ data, onDelete, onItemClick, onAgeSort, o
       <ul className="table">
          <li className="header">
             <div className="header-item">Name</div>
-            <div className="header-item hover" onClick={() => onAgeSort()}>Age</div>
-            <div className="header-item hover" onClick={() => onOvaSort()}>Ova</div>
-            <div className="header-item hover" onClick={() => onPotSort()}>Pot</div>
+            <div className="header-item hover" onClick={() => onSortPlayer('age')}>Age</div>
+            <div className="header-item hover" onClick={() => onSortPlayer('ova')}>Ova</div>
+            <div className="header-item hover" onClick={() => onSortPlayer('pot')}>Pot</div>
             <div className="header-item">Team Contract</div>
-            <div className="header-item hover" onClick={() => onValueSort()}>Value</div>
+            <div className="header-item hover" onClick={() => onSortPlayer('value')}>Value</div>
             <div className="header-item">Wage</div>
             <div className="header-item">Nationality</div>
             <div className="header-item">Joined</div>
