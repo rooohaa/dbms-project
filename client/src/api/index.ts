@@ -45,3 +45,23 @@ export const updatePlayer = async (player: IPlayer) => {
    )
    return await res.json()
 }
+
+export const ageSort = async () => {
+   const res = await fetch(`http://localhost:8000/age-sort`)
+   return await res.json()
+}
+
+export const ovaSort = async () => {
+   const res = await fetch(`http://localhost:8000/ova-sort`)
+   return await res.json()
+}
+
+export const potSort = async () => {
+   const res = await fetch(`http://localhost:8000/pot-sort`)
+   return await res.json()
+}
+
+export const valueSort = async () => {
+   const res = await fetch(`http://localhost:8000/value-sort`)
+   return await res.json()
+}

@@ -1,17 +1,24 @@
-.table{
+.table {
     width: 100%;
     background-color: #f9f9f9;
     padding: 15px;
 }
 
-.header{
+.header {
     display: grid;
     grid-template-columns: 1fr 100px 100px 100px 1fr 100px 100px 100px 100px;
     grid-template-rows: 40px;
 }
 
-.header-item{
+.header-item {
     display: flex;
     justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .35s all;
+}
+
+.hover:hover {
+    background-color: #ececec;
 }
 

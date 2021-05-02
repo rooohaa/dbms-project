@@ -75,6 +75,26 @@ const App = () => {
       setTopPlayers(topPlayers)
    }
 
+   const getAgeSort = async () => {
+      const res = await api.ageSort()
+      setPlayers(res)
+   }
+
+   const getOvaSort = async () => {
+      const res = await api.ovaSort()
+      setPlayers(res)
+   }
+
+   const getPotSort = async () => {
+      const res = await api.potSort()
+      setPlayers(res)
+   }
+
+   const getValueSort = async () => {
+      const res = await api.valueSort()
+      setPlayers(res)
+   }
+
    return (
       <div className="app">
          <div className="app-container">
@@ -90,6 +110,10 @@ const App = () => {
                   data={players}
                   onDelete={deletePlayer}
                   onItemClick={(player: IPlayer) => setActivePlayer(player)}
+                  onAgeSort={getAgeSort}
+                  onOvaSort={getOvaSort}
+                  onPotSort={getPotSort}
+                  onValueSort={getValueSort}
                />
             )}
             {modalActive ? (
